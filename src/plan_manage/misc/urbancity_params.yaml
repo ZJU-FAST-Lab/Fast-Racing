@@ -14,9 +14,9 @@ QdIntervals:                48
 HorizHalfLen:               0.5
 VertHalfLen:                0.15
 SafeMargin:                 0.08
-VelMax:                     18.0
+VelMax:                     19.0
 ThrustAccMin:               5.0
-ThrustAccMax:               16.0
+ThrustAccMax:               17.0
 BodyRateMax:                3.8
 GravAcc:                    9.81
 PenaltyPVTB:                [10000000.0, 10000.0, 10000.0, 10000.0]

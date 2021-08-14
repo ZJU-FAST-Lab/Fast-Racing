@@ -21,7 +21,7 @@ BodyRateMax:                3.8
 GravAcc:                    9.81
 PenaltyPVTB:                [10000000.0, 10000.0, 10000.0, 10000.0]
 UseC2Diffeo:                True
-OptRelTol:                  1.0e-5
+OptRelTol:                  1.0e-6
 TrajVizWidth:               1.0
 TrajVizRGB:                 [0.8, 0.0, 0.0]
 RouteStoragePath:           './data/office_easy_1.txt'

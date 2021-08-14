@@ -113,6 +113,7 @@ void MavGlobalPlanner::plan(const Eigen::MatrixXd &iniState, const Eigen::Matrix
     std::chrono::high_resolution_clock::time_point tic = std::chrono::high_resolution_clock::now();
     SE3GCOPTER nonlinOpt;
     Trajectory traj;
+    ROS_INFO("Begin to optimize the traj~");
     if (!nonlinOpt.setup(config.rho, config.totalT, iniState, finState, hPolys, INFINITY,
                             config.qdIntervals, config.horizHalfLen, config.vertHalfLen,
                             config.safeMargin, config.velMax, config.thrustAccMin, config.thrustAccMax,

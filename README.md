@@ -92,7 +92,7 @@ sudo gedit /usr/include/eigen3/Eigen/src/Core/util/Macros.h
    If your default gcc isn't 8 or greater (check using `gcc --version`), then compilation will fail. In that case, use `gcc-8` explicitly as follows.
 
    ```
-   catkin_make -DCMAKE_C_COMPILER=gcc-8 -DCMAKE_CXX_COMPILER=g++-8 -DCMAKE_BUILD_TYPE=Release
+   catkin_make -DCMAKE_C_COMPILER=gcc-8 -DCMAKE_CXX_COMPILER=g++-8 
    ```
 
 ## 4. Run the Simulation
