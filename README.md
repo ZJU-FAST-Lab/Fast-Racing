@@ -3,11 +3,13 @@
 An Open-source Strong Baseline for SE(3) Planning in Autonomous Drone Racing
 
 ## 0. Overview
-**Fast-Racing** is a strong baseline  that focuses on high-quality and extremely aggressive SE(3) trajectory generation. 
+**Fast-Racing** is a strong baseline that focuses on high-quality and extremely aggressive SE(3) trajectory generation. 
 
-The Back-end optimization is a parallel extension of [GCOPTER](https://github.com/ZJU-FAST-Lab/GCOPTER) for drone racing.
+The back-end optimization is a parallel extension of [__GCOPTER__](https://github.com/ZJU-FAST-Lab/GCOPTER) for drone racing. Powered by a novel sparse trajectory representation named [__MINCO__](https://arxiv.org/pdf/2103.00190.pdf).
 
 **Related Paper**: 
+
+Please cite BOTH papers below if this repo helps you.
 
 - [Fast-Racing: An Open-source Strong Baseline for SE(3) Planning in Autonomous Drone Racing](https://arxiv.org/abs/2105.10276), Zhichao Han, Zhepei Wang, Neng Pan, Yi Lin, Chao Xu, and Fei Gao
 - [Geometrically Constrained Trajectory Optimization for Multicopters](https://arxiv.org/abs/2103.00190), Zhepei Wang, Xin Zhou, Chao Xu, and Fei Gao
@@ -162,6 +164,6 @@ The source code is released under [GPLv3](http://www.gnu.org/licenses/) license.
 
 ## 7. Maintaince
 
-For any technical issues, please contact Zhichao Han (zhichaohan@zju.edu.cn)or Zhepei Wang (wangzhepei@zju.edu.cn). 
+For any technical issue, please contact Zhichao HAN (zhichaohan@zju.edu.cn) or [Zhepei WANG](https://zhepeiwang.github.io/) (wangzhepei@zju.edu.cn). 
 
-For commercial inquiries, please contact Fei GAO (fgaoaa@zju.edu.cn).
+For commercial inquiries, please contact [Fei GAO](https://ustfei.com/) (fgaoaa@zju.edu.cn).

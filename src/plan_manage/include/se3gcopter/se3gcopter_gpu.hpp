@@ -1,3 +1,27 @@
+/*
+    MIT License
+
+    Copyright (c) 2021 Zhepei Wang (wangzhepei@live.com)
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
+*/
+
 #ifndef SE3GCOPTER_HPP
 #define SE3GCOPTER_HPP
 
@@ -5,16 +29,18 @@
 #include <cuda_computer.cuh>
 #include "trajectory.hpp"
 
+// @article{WANG2021GCOPTER,
+//     title={Geometrically Constrained Trajectory Optimization for Multicopters},
+//     author={Wang, Zhepei and Zhou, Xin and Xu, Chao and Gao, Fei},
+//     journal={arXiv preprint arXiv:2103.00190},
+//     year={2021}
+// }
 
-
-
-
-
-class MinCoOpt
+class MINCO_S3
 {
 public:
-    MinCoOpt() = default;
-    ~MinCoOpt() { A.destroy(); 
+    MINCO_S3() = default;
+    ~MINCO_S3() { A.destroy(); 
     }
     cuda_computer paraller;
     double total_time=0;
@@ -386,7 +412,7 @@ private:
     double sumT;
 
     //Minimum Jerk Optimizer
-    MinCoOpt jerkOpt;
+    MINCO_S3 jerkOpt;
 
     // Temp variables for problem solving
     Eigen::MatrixXd iState;
