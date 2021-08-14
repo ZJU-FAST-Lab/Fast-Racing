@@ -1,6 +1,11 @@
 cmake_minimum_required(VERSION 3.10.0)
 project(airsim_ros_pkgs)
 
+set(CMAKE_BUILD_TYPE "Release")
+set(CMAKE_CXX_FLAGS_RELEASE "-O3 -Wall -g")
+
+
+
 # set this to path to AirSim root folder if you want your catkin workspace in a custom directory
 set(AIRSIM_ROOT ${PROJECT_SOURCE_DIR}/../thirdparty)
 
