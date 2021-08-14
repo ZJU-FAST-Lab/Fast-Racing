@@ -5,7 +5,7 @@ An Open-source Strong Baseline for SE(3) Planning in Autonomous Drone Racing
 ## 0. Overview
 **Fast-Racing** is a strong baseline that focuses on high-quality and extremely aggressive SE(3) trajectory generation. 
 
-The back-end optimization is a parallel extension of [__GCOPTER__](https://github.com/ZJU-FAST-Lab/GCOPTER) for drone racing. Powered by a novel sparse trajectory representation named [__MINCO__](https://arxiv.org/pdf/2103.00190.pdf).
+The back-end optimization is a parallel extension of [__GCOPTER__](https://github.com/ZJU-FAST-Lab/GCOPTER) for drone racing, powered by [__MINCO__](https://arxiv.org/pdf/2103.00190.pdf) trajectory representation.
 
 **Related Paper**: 
 
@@ -164,6 +164,6 @@ The source code is released under [GPLv3](http://www.gnu.org/licenses/) license.
 
 ## 7. Maintaince
 
-For any technical issue, please contact Zhichao HAN (zhichaohan@zju.edu.cn) or [Zhepei WANG](https://zhepeiwang.github.io/) (wangzhepei@zju.edu.cn). 
+Any technical issue, please contact Zhichao HAN (zhichaohan@zju.edu.cn) or [Zhepei WANG](https://zhepeiwang.github.io/) (wangzhepei@zju.edu.cn). 
 
 For commercial inquiries, please contact [Fei GAO](https://ustfei.com/) (fgaoaa@zju.edu.cn).
