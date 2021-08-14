@@ -12,7 +12,7 @@ The Back-end optimization is a parallel extension of [GCOPTER](https://github.co
 - [Fast-Racing: An Open-source Strong Baseline for SE(3) Planning in Autonomous Drone Racing](https://arxiv.org/abs/2105.10276), Zhichao Han, Zhepei Wang, Neng Pan, Yi Lin, Chao Xu, and Fei Gao
 - [Geometrically Constrained Trajectory Optimization for Multicopters](https://arxiv.org/abs/2103.00190), Zhepei Wang, Xin Zhou, Chao Xu, and Fei Gao
 
-**Video Links**: [youtube](https://www.youtube.com/watch?v=kjSU2vXCXXg) or [bilibili](https://www.bilibili.com/video/BV1sq4y1779e/)
+**Video Links**: [youtube](https://www.youtube.com/watch?v=kjSU2vXCXXg) or [bilibili](https://www.bilibili.com/video/BV1sq4y1779e/).
 
 ![](figs/1.gif)
 
