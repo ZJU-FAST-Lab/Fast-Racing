@@ -15,6 +15,7 @@ The Back-end optimization is a parallel extension of [GCOPTER](https://github.co
 **Video Links**: [youtube](https://www.youtube.com/watch?v=kjSU2vXCXXg) or [bilibili](https://www.bilibili.com/video/BV1sq4y1779e/)
 
 ![](figs/1.gif)
+
 ![](figs/2.gif)
 
 ## 1. Setup
