@@ -48,15 +48,13 @@ include_directories(
 
 
 if(ENABLE_CUDA)
+  find_package(CUDA REQUIRED)
   catkin_package(
   INCLUDE_DIRS include
   LIBRARIES path_searching
   DEPENDS OpenCV Eigen Boost
-  LIBRARIES cuda_computer
-
   )
   SET(CUDA_SEPARABLE_COMPILATION ON)
-  find_package(CUDA REQUIRED)
   SET(CUDA_NVCC_FLAGS ${CUDA_NVCC_FLAGS};-O3 -use_fast_math;)
   set(CUDA_NVCC_FLAGS 
   #       -gencode arch=compute_20,code=sm_20;
@@ -69,6 +67,7 @@ if(ENABLE_CUDA)
   #       -gencode arch=compute_61,code=sm_61;
         -gencode arch=compute_75,code=sm_75;
   ) 
+  set(CUDA_SEPARABLE_COMPILATION ON) 
 
 
 
@@ -81,10 +80,11 @@ if(ENABLE_CUDA)
         -Xcompiler '-fPIC'
     )
   target_link_libraries(cuda_computer cublas
+  ${CUDA_LIBRARIES}
   cudadevrt)
 
   add_executable(se3_node
-      src/se3_node.cpp
+      src/se3_node_gpu.cpp
       src/se3_planner.cpp  
       src/MinCoPlan_GPU.cpp
   )
@@ -100,7 +100,7 @@ else(ENABLE_CUDA)
     DEPENDS OpenCV Eigen Boost
   )
   add_executable(se3_node
-      src/se3_node.cpp
+      src/se3_node_cpu.cpp
       src/se3_planner.cpp  
       src/MinCoPlan_CPU.cpp
   )
