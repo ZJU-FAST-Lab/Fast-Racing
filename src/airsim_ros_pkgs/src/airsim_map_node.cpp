@@ -39,9 +39,9 @@ using namespace octomap_server;
 ros::Publisher  airsim_map_pub;
 sensor_msgs::PointCloud2 globalMap_pcd;
 pcl::PointCloud<pcl::PointXYZ> cloudMap;
-sensor_msgs::PointCloud cloudtest;
 //octree
 OctomapServer* server_drone;
+bool use_octree;
 int main(int argc, char ** argv)
 {
     ros::init(argc, argv, "map_node");
@@ -55,22 +55,23 @@ int main(int argc, char ** argv)
                 1,0,0,
                 0,0,-1;
     nh.param("host_ip", host_ip,std::string("localhost"));
-    
+    nh.param("resolution",resolution,0.1);
     nh.param("world_frame_id",world_frameid,std::string("/world_enu"));
-    server_drone = new OctomapServer(private_nh, nh,world_frameid);
+    nh.param("use_octree",use_octree,false);
+    if(use_octree)
+      server_drone = new OctomapServer(private_nh, nh,world_frameid);
     airsim_map_pub   = nh.advertise<sensor_msgs::PointCloud2>("/airsim_global_map", 1);  
     msr::airlib::RpcLibClientBase airsim_client_map_(host_ip);
-    resolution = 0.1;
     airsim_client_map_.confirmConnection();
     vector<string> objects_list;
     ros::Rate rate(map_f);
     int count=0;
     while(ros::ok()){
         ros::spinOnce();
-        if(count<=20){
+        if(count<=10){
           cloudMap.points.clear();
-          cloudtest.points.clear();        
-          server_drone->m_octree->clear();
+          if(use_octree)
+            server_drone->m_octree->clear();
           objects_list = airsim_client_map_.simListSceneObjects("Cube.*");
           for(int i =0;i<objects_list.size();i++){  
               msr::airlib::Pose cube_pose;
@@ -97,6 +98,8 @@ int main(int argc, char ** argv)
               else{
                 ROS_ERROR("wrong map frame id!");
               }
+              if(count==0)
+                ROS_INFO("We are sending global map~ Please wait~");
               double lx,ly,lz;
                 for(lx = -cube_scale.x()/2; lx<cube_scale.x()/2+resolution;lx+=resolution){
                   for(ly = -cube_scale.y()/2; ly<cube_scale.y()/2+resolution;ly+=resolution){
@@ -114,13 +117,14 @@ int main(int argc, char ** argv)
                           cpt.x = pt.x;
                           cpt.y = pt.y;
                           cpt.z = pt.z;
-                          cloudtest.points.push_back(cpt);
-                          server_drone->m_octree->updateNode(point3d(pt.x+1e-5,pt.y+1e-5,pt.z+1e-5), true);
+                          if(use_octree)
+                            server_drone->m_octree->updateNode(point3d(pt.x+1e-5,pt.y+1e-5,pt.z+1e-5), true);
                       }
                   }
               }
           }
-          server_drone->publishAll();
+          if(use_octree)
+            server_drone->publishAll();
           count++;
           cloudMap.width = cloudMap.points.size();
           cloudMap.height = 1;
@@ -128,7 +132,6 @@ int main(int argc, char ** argv)
           pcl::toROSMsg(cloudMap, globalMap_pcd);
           globalMap_pcd.header.frame_id = world_frameid; 
           airsim_map_pub.publish(globalMap_pcd);
-          cloudtest.header.frame_id = world_frameid;
           ROS_INFO("send global map");
         }
         rate.sleep();

@@ -4,7 +4,7 @@
 	<arg name="is_vulkan" default="true"/>
 	<arg name="host" default="localhost" />
 	<arg name="frame" default="/world_enu"/>
-
+ 	<arg name="use_octree"/>
 	<node name="airsim_node" pkg="airsim_ros_pkgs" type="airsim_node" output="screen">
 		<param name="is_vulkan" type="bool" value="false" /> 
 		<!-- ROS timer rates. Note that timer callback will be processed at maximum possible rate, upperbounded by the following ROS params -->
@@ -21,6 +21,7 @@
 		<param name="host_ip" type="string" value="$(arg host)" />
 		<param name="world_frame_id" type="string" value="$(arg frame)" />
 		<param name="resolution" type="double" value="0.1" />
+		<param name="use_octree" type="bool" value="$(arg use_octree)" />
 	</node>
 
 	<!-- Static transforms -->

@@ -1,7 +1,9 @@
 <launch>
   <arg name="host" default="localhost" />
+  <arg name="use_octree" value="true"/>
   <!-- airsim  ros -->
   <include file="$(find airsim_ros_pkgs)/launch/airsim_node.launch">
+    <arg name="use_octree" value="$(arg use_octree)"/>
   </include>
   <!-- visualization -->
   <node pkg="odom_visualization" name="odom_visualization" type="odom_visualization" output="screen">
