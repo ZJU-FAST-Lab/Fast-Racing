@@ -1,0 +1,7 @@
+<launch>
+    <node pkg="traj_server" type="traj_server_node" name="traj_server" output="screen" launch-prefix="">
+        <remap from="~/position_command" to="/position_cmd"/>
+        <remap from="~/odometry"      to="/airsim_node/drone_1/odom_local_enu"/>
+        <remap from="~/trajectory" to="/trajectory"/>
+	</node>
+</launch>

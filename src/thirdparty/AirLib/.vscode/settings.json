@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.cu": "cpp",
+        "*.ipp": "cpp",
+        "chrono": "cpp"
+    }
+}

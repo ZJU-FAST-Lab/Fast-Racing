@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package>
+  <name>traj_server</name>
+  <version>0.0.1</version>
+  <description>The planner package for the paper "Flying on Pointclouds"</description>
+  <maintainer email="fgaoaa@connect.ust.hk">Fei Gao</maintainer>
+
+  <license>GPLv3</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>quadrotor_msgs</build_depend>
+
+  <run_depend>roscpp</run_depend>
+  <run_depend>rospy</run_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>quadrotor_msgs</run_depend>
+
+  <export>
+  </export>
+</package>

@@ -1,0 +1,8 @@
+<launch>
+	<node pkg="odom_visualization" type="odom_visualization" name="odom_visualization" output="screen">
+		<remap from="~odom" to="/vins_estimator/imu_propagate" />
+		<!-- <remap from="~odom" to="/camera_t265/odom/sample" /> -->
+
+	</node>
+ 
+</launch>

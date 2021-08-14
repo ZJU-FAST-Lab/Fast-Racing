@@ -1,0 +1,30 @@
+MapTopic:                   '/random_complex/global_map'
+TargetTopic:                '/move_base_simple/goal'
+OdomFrame:                  '/world_enu'
+# 14 12
+#18 16
+# 21 18
+
+ScaleSI:                    1.0
+MapHeight:                  3.0
+PolyhedronBox:              [4.0, 4.0, 2.5]
+Rho:                        1000.0
+TotalT:                     0.0
+QdIntervals:                48 
+HorizHalfLen:               0.5
+VertHalfLen:                0.15
+SafeMargin:                 0.08
+VelMax:                     21.0
+ThrustAccMin:               5.0
+ThrustAccMax:               18.0
+BodyRateMax:                3.8
+GravAcc:                    9.81
+PenaltyPVTB:                [10000000.0, 10000.0, 10000.0, 10000.0]
+UseC2Diffeo:                True
+OptRelTol:                  1.0e-5
+TrajVizWidth:               1.0
+TrajVizRGB:                 [0.8, 0.0, 0.0]
+RouteStoragePath:           './data/office_easy_1.txt'
+EllipsoidPath:              '/misc/data/sphere.stl'
+EllipsoidVizRGBA:            [1.0, 0.0, 1.0, 1.0]
+QuadrotorPath:              '/misc/data/quadcopter.dae'

@@ -1,0 +1,57 @@
+<launch>
+
+  <!-- rviz -->
+   <node name="rviz" pkg="rviz" type="rviz" output="screen"
+       args="-d $(find path_searching)/rviz/visualization.rviz"> 
+  </node>
+  <!-- airsim  ros -->
+  <include file="$(find airsim_ros_pkgs)/launch/airsim_node.launch">
+  </include>
+  <!-- visualization -->
+  <node pkg="odom_visualization" name="odom_visualization" type="odom_visualization" output="screen">
+        <remap from="~odom" to="/airsim_node/drone_1/odom_local_enu"/>
+        <param name="color/a" value="1.0"/>    
+        <param name="color/r" value="1.0"/>        
+        <param name="color/g" value="1.0"/>        
+        <param name="color/b" value="1.0"/>       
+        <param name="covariance_scale" value="100.0"/>       
+        <param name="robot_scale" value="1.0"/>
+  </node>
+  <!-- waypoint callback -->
+  <node pkg="waypoint_generator" name="waypoint_generator" type="waypoint_generator" output="screen">
+      <remap from="~goal" to="/goal"/>
+      <param name="waypoint_type" value="manual-lonely-waypoint"/>    
+  </node>
+  <!-- racer planner -->
+  <node pkg="path_searching" type="racer_node" name="racer_node" output="screen">
+      <remap from="~waypoints"       to="/waypoint_generator/waypoints"/>
+      <remap from="~PointCloud_in"             to="/airsim_global_map"/>
+      <remap from="~odom"             to="/airsim_node/drone_1/odom_local_enu"/>
+      <remap from="~trajectory"     to=  "/trajectory" />
+
+    
+      <!-- 0.2 -->
+      <param name="search/init_max_tau" value="0.8" type="double"/>
+      <param name="search/max_vel" value="10.0" type="double"/>
+      <param name="search/max_acc" value="2.0" type="double"/>
+        <!-- <param name="search/max_tau" value="0.4" type="double"/> -->
+        <param name="search/max_tau" value="0.6" type="double"/>
+        <!-- fast-planner max-acc 2 max-tau 0.6 -->
+      <!-- 5.0 -->
+      <param name="search/w_time" value="10.0" type="double"/>
+      <param name="search/horizon" value="7.0" type="double"/>
+      <param name="search/lambda_heu" value="5.0" type="double"/>
+      <param name="search/resolution_astar" value="0.1" type="double"/>
+      <param name="search/time_resolution" value="0.8" type="double"/>
+      <param name="search/margin" value="0.2" type="double"/>
+      <param name="search/allocate_num" value="100000" type="int"/>
+      <param name="search/check_num" value="8" type="int"/>
+      <param name="map/z_size" value="2" type="double"/>
+      <param name="map/x_size" value="100" type="double"/>
+      <param name="map/y_size" value="400" type="double"/>
+      <param name="world_frame_id" value="/world_enu" type="string"/>
+
+  </node>
+
+
+</launch>

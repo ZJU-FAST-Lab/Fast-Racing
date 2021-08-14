@@ -1,0 +1,11 @@
+<launch>
+	<arg name="uavname" default="fpv" />
+
+	<node pkg="Ctrl" type="Ctrl_node" name="Ctrl" output="screen">
+        <remap from="~odom" to="/airsim_node/drone_1/odom_local_enu" />
+		<remap from="~cmd" to="/position_cmd" />
+		<remap from="~imu" to="/airsim_node/drone_1/imu/Imu" />
+        <rosparam command="load" file="$(find Ctrl)/config/ctrl_param_$(arg uavname).yaml" />
+	</node>
+ 
+</launch>

@@ -1,0 +1,48 @@
+<launch>
+  <arg name="host" default="localhost" />
+  <!-- airsim  ros -->
+  <include file="$(find airsim_ros_pkgs)/launch/airsim_node.launch">
+  </include>
+  <!-- visualization -->
+  <node pkg="odom_visualization" name="odom_visualization" type="odom_visualization" output="screen">
+        <remap from="~odom" to="/airsim_node/drone_1/odom_local_enu"/>
+        <param name="color/a" value="1.0"/>    
+        <param name="color/r" value="1.0"/>        
+        <param name="color/g" value="0.0"/>        
+        <param name="color/b" value="0.0"/>       
+        <param name="covariance_scale" value="100.0"/>       
+        <param name="robot_scale" value="2.0"/>
+  </node>
+  <!-- waypoint callback -->
+  <node pkg="waypoint_generator" name="waypoint_generator" type="waypoint_generator" output="screen">
+      <remap from="~goal" to="/goal"/>
+      <param name="waypoint_type" value="manual-lonely-waypoint"/>    
+  </node>
+  <!-- se3 planner -->
+    <node pkg="plan_manage" type="se3_node" name="se3_node" output="screen">
+      <remap from="~waypoints"       to="/waypoint_generator/waypoints"/>
+      <remap from="~PointCloud_in"             to="/airsim_global_map"/>
+      <remap from="~odom"             to="/airsim_node/drone_1/odom_local_enu"/>
+      <remap from="~trajectory"     to=  "/trajectory" />
+      <rosparam file="$(find plan_manage)/misc/urbancity_params.yaml" command="load" />
+    
+   
+      <param name="map/z_size" value="2.8" type="double"/>
+      <param name="map/x_size" value="300" type="double"/>
+      <param name="map/y_size" value="220" type="double"/>
+      <param name="world_frame_id" value="/world_enu" type="string"/>
+      <param name="use_esdf" value="false" type="bool"/>
+      <param name="host_ip" type="string" value="$(arg host)" />
+
+      <param name="jps/resolution" value="0.1" type="double"/>
+      <param name="jps/lambda_heu" value="1.0" type="double"/>
+      <param name="jps/allocate_num" value="500000" type="double"/>
+      <param name="jps/use_gridmap" value="true" type="bool"/>
+ 
+
+  </node>
+
+
+
+
+</launch>

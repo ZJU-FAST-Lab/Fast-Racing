@@ -1,0 +1,9 @@
+<launch>
+    <node pkg="traj_server" type="traj_server_node" name="traj_server" output="screen" launch-prefix="">
+        <remap from="~/position_command" to="/position_cmd"/>
+        <remap from="~/odometry" to="/vins_estimator/imu_propagate"/>
+        <!-- <remap from="~/odometry"      to="/visual_slam/odom"/> -->
+        <remap from="~/trajectory" to="/trajectory"/>
+        <remap from="~front_pos_forpredict"     to=  "/apriltags2_ros_continuous_node/front_detected_pos" />
+	</node>
+</launch>
